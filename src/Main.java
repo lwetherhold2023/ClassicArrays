@@ -42,8 +42,12 @@ public class Main {
                     System.out.println("\nEnter day number in the week (1-7):");
                     dayInput = scan.nextInt();
 
-                    // output info
-                    System.out.println(weekdays[dayInput - 1] + ": " + tasks[dayInput - 1]);
+                    if (dayInput - 1 < 0 || dayInput - 1 > 6) {
+                        System.out.println("There is no such day of the week.");
+                    } else {
+                        // output info
+                        System.out.println(weekdays[dayInput - 1] + ": " + tasks[dayInput - 1]);
+                }
                     break;
                 case "working":
                     // resize arrays into temp arrays
@@ -55,16 +59,14 @@ public class Main {
                     // output info
                     System.out.println("\nWorking Days: ");
                     for (int i = 0; i < tempWeekdays.length; i++) {
-                        System.out.println(tempWeekdays[i]);
-                        System.out.println(tempTasks[i]);
+                        System.out.println(tempWeekdays[i] + " [" + tempTasks[i] + "]");
                     }
                     break;
                 case "all":
                     // output info
                     System.out.println("\nWeekdays: ");
                     for (int i = 0; i < weekdays.length; i++) {
-                        System.out.println(weekdays[i]);
-                        System.out.println(tasks[i]);
+                        System.out.println(weekdays[i] + " [" + tasks[i] + "]");
                     }
                     break;
                 case "stop":
