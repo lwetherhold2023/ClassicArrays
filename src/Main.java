@@ -7,8 +7,10 @@ public class Main {
 
         // set up arrays
         String[] weekdays = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
+        String[] allWeekdays = new String[7];
         String[] tempWeekdays = new String[5];
         String[] tasks = new String[7];
+        String[] allTasks = new String[7];
         String[] tempTasks = new String[5];
 
         // set up variables
@@ -22,7 +24,9 @@ public class Main {
         // ask for input of tasks
         for (int i = 0; i < weekdays.length; i++) {
             System.out.println("Enter task(s) for " + weekdays[i] + ":");
+            allWeekdays[i] = weekdays[i];
             taskInput = scan.nextLine();
+            allTasks[i] = taskInput;
             tasks[i] = taskInput;
         }
 
@@ -46,27 +50,31 @@ public class Main {
                         System.out.println("There is no such day of the week.");
                     } else {
                         // output info
-                        System.out.println(weekdays[dayInput - 1] + ": " + tasks[dayInput - 1]);
+                        System.out.println(allWeekdays[dayInput - 1] + ": " + allTasks[dayInput - 1]);
                 }
                     break;
                 case "working":
                     // resize arrays into temp arrays
-                    for (int i = 0; i < 5; i++) {
+                    for (int i = 0; i < tempWeekdays.length; i++) {
                         tempWeekdays[i] = weekdays[i];
                         tempTasks[i] = tasks[i];
                     }
 
+                    // copy temp arrays into arrays
+                    weekdays = tempWeekdays;
+                    tasks = tempTasks;
+
                     // output info
                     System.out.println("\nWorking Days: ");
-                    for (int i = 0; i < tempWeekdays.length; i++) {
-                        System.out.println(tempWeekdays[i] + " [" + tempTasks[i] + "]");
+                    for (int i = 0; i < weekdays.length; i++) {
+                        System.out.println(weekdays[i] + " [" + tasks[i] + "]");
                     }
                     break;
                 case "all":
                     // output info
                     System.out.println("\nWeekdays: ");
-                    for (int i = 0; i < weekdays.length; i++) {
-                        System.out.println(weekdays[i] + " [" + tasks[i] + "]");
+                    for (int i = 0; i < allWeekdays.length; i++) {
+                        System.out.println(allWeekdays[i] + " [" + allTasks[i] + "]");
                     }
                     break;
                 case "stop":
